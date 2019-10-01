@@ -13,6 +13,8 @@ void main ()
     float area = 0;
     printf ("Ingrese el radio \n");
     scanf ("%f", &radio);
-    area = (2 * radio) * pi;
+    //area = radio * radio * pi;
+    //area = (2 * radio) * pi;
+    area = pi * pow(radio, 2);
     printf ("El area es %.2f", area);
 }

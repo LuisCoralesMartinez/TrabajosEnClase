@@ -14,5 +14,5 @@ void main ()
     printf ("Ingrese el radio \n");
     scanf ("%f", &radio);
     area = (2 * radio) * pi;
-    printf ("El area es %f", area);
+    printf ("El area es %.2f", area);
 }

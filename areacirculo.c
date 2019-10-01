@@ -5,7 +5,7 @@ Realizar un programa en C que determine el area de un circulo
 *******************************************************************************/
 #include <stdio.h>
 
-#define pi 3.1415
+#define pi 3.1416
 
 void main ()
 {

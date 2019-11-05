@@ -11,15 +11,16 @@ float areaCir(float);
 int factorial(int);
 int tablaMult(int, int);
 void parImpar(int);
+void positivosNegativos(int);
 
 void main()
 {
     float rad;
-    int num, tabla, lim, op;
+    int num, tabla, lim, op, n;
     
     do
     {
-        printf("Escoge un opcion\n1. Factorial\n2. Area de un circulo\n3. Tabla de multiplicar\n4. Par o impar\n5. Salir\n");
+        printf("Escoge un opcion\n1. Factorial\n2. Area de un circulo\n3. Tabla de multiplicar\n4. Par o impar\n5. Contar positivos, negativos y ceros\n6. Salir\n");
         scanf("%i", &op);
         
         switch(op)
@@ -28,6 +29,7 @@ void main()
                 printf("Factorial de un numero\nIngrese un numero entero: ");
                 scanf("%i", &num);
                 printf("El factorial es %i\n\n", factorial(num));
+                
                 getchar();
                 getchar();
                 system("clear");
@@ -37,6 +39,7 @@ void main()
                 printf("Area de un circulo\nIngrese el radio: ");
                 scanf("%f", &rad);
                 printf("El área del ciruclo es %.2f\n\n", areaCir(rad));
+                
                 getchar();
                 getchar();
                 system("clear");
@@ -48,6 +51,7 @@ void main()
                 printf("Ingrese el limite: ");
                 scanf("%i", &lim);
                 tablaMult(tabla, lim);
+                
                 getchar();
                 getchar();
                 system("clear");
@@ -57,16 +61,31 @@ void main()
                 printf("Ingrese un numero entero: ");
                 scanf("%i", &num);
                 parImpar(num);
+                
                 getchar();
                 getchar();
                 system("clear");
             break;
             
             case 5:
+                do
+                {
+                    printf("Cuantos numeros ingresará? (Al menos un numero): ");
+                    scanf("%i", &n);
+                }while(n < 1);
+                
+                positivosNegativos(n);
+                
+                getchar();
+                getchar();
+                system("clear");
+            break;
+            
+            case 6:
                 printf("Ha salido del programa");
                 exit(0);
             break;
-            
+
             default:
                 printf("Opcion no valida\n");
             break;
@@ -112,12 +131,43 @@ int tablaMult(int tabla, int lim)
 
 void parImpar(int num)
 {
-    if(num % 2 == 0)
+    if(num % 2 == 0 && num != 0)
     {
         printf("Es par\n");
     }
-    else
+    else if(num != 0)
     {
         printf("Es impar\n");
     }
+}
+
+void positivosNegativos(int n)
+{
+    
+    int pCont = 0, nCont = 0, ceroCont = 0, numero, cont = 1;
+    
+    do
+    {
+        printf("Ingrese un numero entero: ");
+        scanf("%i", &numero);
+        if(numero < 0)
+        {
+            nCont++;
+        }
+        else if(numero > 0)
+        {
+            pCont++;
+        }
+        else
+        {
+            ceroCont++;
+        }
+        
+        cont++;
+        
+    }while(cont <= n);
+    
+    printf("Hay %i numeros positivos\n", pCont);
+    printf("Hay %i numeros negativos\n", nCont);
+    printf("Hay %i ceros\n", ceroCont);
 }

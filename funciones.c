@@ -1,30 +1,38 @@
 /******************************************************************************
-
 Ejercicio de funciones
-
 *******************************************************************************/
+
+//Declaración de bibliotecas
 #include <stdio.h>
 #include <math.h>
 #include <stdlib.h>
 
+//Declaración de funciones
 float areaCir(float);
 int factorial(int);
 int tablaMult(int, int);
 void parImpar(int);
 void positivosNegativos(int);
+void promedio(int, int);
 
+//Funcion principal
 void main()
 {
+    //Declaración de variables gloables
     float rad;
     int num, tabla, lim, op, n;
+    int nEstudiantes, nNotas;
     
+    //Iteración para escoger la operación deseada
     do
     {
-        printf("Escoge un opcion\n1. Factorial\n2. Area de un circulo\n3. Tabla de multiplicar\n4. Par o impar\n5. Contar positivos, negativos y ceros\n6. Salir\n");
+        printf("Escoge un opcion\n1. Factorial\n2. Area de un circulo\n3. Tabla de multiplicar\n4. Par o impar\n5. Contar positivos, negativos y ceros\n6. Determinar el promedio de n estudiantes de n notas\n7. Salir\n");
         scanf("%i", &op);
         
+        //Selección de operaciones
         switch(op)
         {
+            //Calcular el factorial de un numero
             case 1:
                 printf("Factorial de un numero\nIngrese un numero entero: ");
                 scanf("%i", &num);
@@ -35,6 +43,7 @@ void main()
                 system("clear");
             break;
             
+            //Calcular el area de un circulo
             case 2:
                 printf("Area de un circulo\nIngrese el radio: ");
                 scanf("%f", &rad);
@@ -45,6 +54,7 @@ void main()
                 system("clear");
             break;
             
+            //Imprimir tabla de multiplicar de cualquier numero
             case 3:
                 printf("Tabla de multiplicar\nIngrese la tabla: ");
                 scanf("%i", &tabla);
@@ -57,8 +67,9 @@ void main()
                 system("clear");
             break;
             
+            //Verificar si es par o impar
             case 4:
-                printf("Ingrese un numero entero: ");
+                printf("Verificación de pares e impares\nIngrese un numero entero: ");
                 scanf("%i", &num);
                 parImpar(num);
                 
@@ -67,7 +78,9 @@ void main()
                 system("clear");
             break;
             
+            //Conteo de numeros pos, neg y ceros
             case 5:
+                printf("Contar numeros positivos, negativos y ceros");
                 do
                 {
                     printf("Cuantos numeros ingresará? (Al menos un numero): ");
@@ -81,27 +94,36 @@ void main()
                 system("clear");
             break;
             
+            //Calcular el promedio de n estudiantes
             case 6:
+                printf("Determinar el promedio de n estudiantes de n notas\nIngrese el numero de estudiantes: ");
+                scanf("%i", &nEstudiantes);
+                
+                printf("Ingrese el numero de notas: ");
+                scanf("%i", &nNotas);
+                
+                promedio(nEstudiantes, nNotas);
+                
+                getchar();
+                getchar();
+                system("clear");
+            break;
+            
+            //Salir del programa
+            case 7:
                 printf("Ha salido del programa");
                 exit(0);
             break;
-
+            
+            //Opcion default
             default:
                 printf("Opcion no valida\n");
             break;
         }
-    }while(op != 5);
+    }while(op != 7);    //Repetir la operacion si la opcion escogida no es 7
 }
 
-float areaCir(float rad)
-{
-    float area = 0, pi = 3.1416;
-
-    area = pow(rad, 2) * pi;
-    
-    return area;
-}
-
+//Calcular el factorial de un numero
 int factorial(int num)
 {
     int fact = 1, cont = 1;
@@ -115,6 +137,17 @@ int factorial(int num)
     return fact;
 }
 
+//Calcular el area de un circulo
+float areaCir(float rad)
+{
+    float area = 0, pi = 3.1416;
+
+    area = pow(rad, 2) * pi;
+    
+    return area;
+}
+
+//Imprimir tabla de multiplicar de cualquier numero
 int tablaMult(int tabla, int lim)
 {
     int mult = 1, cont = 1;
@@ -129,6 +162,7 @@ int tablaMult(int tabla, int lim)
     return mult;
 }
 
+//Verificar si es par o impar
 void parImpar(int num)
 {
     if(num % 2 == 0 && num != 0)
@@ -141,6 +175,7 @@ void parImpar(int num)
     }
 }
 
+//Conteo de numeros pos, neg y ceros
 void positivosNegativos(int n)
 {
     
@@ -170,4 +205,29 @@ void positivosNegativos(int n)
     printf("Hay %i numeros positivos\n", pCont);
     printf("Hay %i numeros negativos\n", nCont);
     printf("Hay %i ceros\n", ceroCont);
+}
+
+//Calcular el promedio de n estudiantes
+void promedio(int nEstudiantes, int nNotas)
+{
+    float promedio, nota, suma = 0;
+    int contEst, contNota;
+    
+    for(contEst = 1; contEst <= nEstudiantes; contEst++)
+    {
+        for(contNota = 1; contNota <= nNotas; contNota++)
+        {
+            printf("Ingrese la nota: ");
+            scanf("%f", &nota);
+            
+            suma += nota;
+        }
+        
+        promedio = suma / nNotas;
+        
+        printf("El promedio del alumno %i es %.2f\n", contEst, promedio);
+        
+        suma = 0;
+        promedio = 0;
+    }
 }

@@ -38,7 +38,7 @@ int main()
             break;
             
             default:
-                printf("Opción no válida\n");
+                printf("Ingrese un número del 1 al 3\n");
             break;
         }
     }while(op != 3);

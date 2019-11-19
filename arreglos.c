@@ -8,7 +8,8 @@ Arreglos
 #define tam 10
 
 void inicializarArreglo(int[]);
-void datosVector();
+void datosVector(int);
+void buscarNumArreglo(int);
 
 int main()
 {
@@ -17,7 +18,7 @@ int main()
     
     do
     {
-        printf("1. Inicialización de arreglos\n2. Datos Vector\n3. Salir\n");
+        printf("1. Inicialización de arreglos\n2. Datos Vector\n3. Buscar Numero en arreglo\n4. Salir\n");
         scanf("%d", &op);
         
         switch(op)
@@ -33,6 +34,12 @@ int main()
             break;
             
             case 3:
+                printf("Ingrese la cantidad de elementos del vector: ");
+                scanf("%d", &cantNum);
+                buscarNumArreglo(cantNum);
+            break;
+            
+            case 4:
                 printf("Ha salido");
                 exit(0);
             break;
@@ -75,5 +82,35 @@ void datosVector(int cant)
         printf("Arreglo[%d] = %d\n", cont, arreglo[cont]);
         cont++;
     }
+}
+
+void buscarNumArreglo(int cantidad)
+{
+    int cont = 0, arreglo[tam], cuenta = 0, numero;
     
+    while(cont < cantidad)
+    {
+        printf("Ingrese el elemento[%d]: ", cont);
+        scanf("%d", &arreglo[cont]);
+        
+        cont++;
+    }
+    
+    cont = 0;
+    
+    printf("Ingrese el elemento a buscar: ");
+    scanf("%d", &numero);
+    
+    while(cont < cantidad)
+    {
+        printf("Elemento[%d]=%d\n",cont,arreglo[cont]);
+		if(numero == arreglo[cont])
+		{
+		    cuenta++;
+        }
+        
+        cont++;
+    }
+    
+    printf("El numero %d se repite %d veces\n", numero, cuenta);
 }

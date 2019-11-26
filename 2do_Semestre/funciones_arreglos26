@@ -16,7 +16,7 @@ void main()
 	
 	while(op<=6)
 	{
-		printf("1. Inicializacion Arreglo\n2. Datos Arreglo\n3. Numero Buscar\n4. Promedio Estudiante\n5. Pares e Impares\n6. Multiplos\n7. Positivos y negativos\n");
+		printf("1. Inicializacion Arreglo\n2. Datos Arreglo\n3. Numero Buscar\n4. Promedio Estudiante\n5. Pares e Impares\n6. Multiplos\n7. Positivos y negativos\n8. Salir\n");
 		printf("Ingrese la opcion:");
 		scanf("%d", &op);
 		
@@ -74,6 +74,10 @@ void main()
 			
 			case 7:
 				posNeg(arreglo);
+			break;
+			
+			case 8:
+				exit(0);
 			break;
 			
 			default:

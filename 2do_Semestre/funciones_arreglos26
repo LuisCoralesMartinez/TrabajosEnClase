@@ -1,0 +1,222 @@
+#include<stdio.h>
+#include<stdlib.h>
+#define tam 10
+
+void inicializaArreglo(int[]);
+void datosArreglo(int);
+void numBuscar(int);
+void promedioEst(int);
+void paresImpares(int []);
+void multiplos(int);
+void posNeg(int[]);
+
+void main()
+{
+	int arreglo[tam] = {3,-1,5,9}, cantNum, op;
+	
+	while(op<=6)
+	{
+		printf("1. Inicializacion Arreglo\n2. Datos Arreglo\n3. Numero Buscar\n4. Promedio Estudiante\n5. Pares e Impares\n6. Multiplos\n7. Positivos y negativos\n");
+		printf("Ingrese la opcion:");
+		scanf("%d", &op);
+		
+		switch(op)
+		{
+			case 1:
+				inicializaArreglo(arreglo);
+				getchar();
+				getchar();
+				system("clear");
+			break;
+			
+			case 2:
+				printf("Ingrese la cantidad de elementos del vector: ");
+				scanf("%d", &cantNum);
+				datosArreglo(cantNum);
+				getchar();
+				getchar();
+				system("clear");
+			break;
+			
+			case 3:
+				printf("Ingrese la cantidad de elementos del vector: ");
+				scanf("%d", &cantNum);
+				numBuscar(cantNum);
+				getchar();
+				getchar();
+				system("clear");
+			break;
+			
+			case 4:
+				printf("Ingrese la cantidad de notas: ");
+				scanf("%d", &cantNum);
+				promedioEst(cantNum);
+				getchar();
+				getchar();
+				system("clear");
+			break;
+			
+			case 5:
+				paresImpares(arreglo);
+				getchar();
+				getchar();
+				system("clear");
+			break;
+			
+			case 6:
+				printf("Ingrese la cantidad de numeros a generar: ");
+				scanf("%d", &cantNum);
+				multiplos(cantNum);
+				getchar();
+				getchar();
+				system("clear");
+			break;
+			
+			case 7:
+				posNeg(arreglo);
+			break;
+			
+			default:
+				printf("Opcion Invalida\n");
+			break;
+		}
+	}
+}
+
+void inicializaArreglo(int arreg[tam])
+{
+	int cont = 0;
+	while(cont < 4)
+	{
+		printf("Elemento[%d] = %d\n", cont, arreg[cont]);
+		cont++;
+	}
+}
+
+void datosArreglo(int cant)
+{
+	int cont = 0, arreglo[tam];
+	while(cont < cant)
+	{
+		printf("Ingrese el elemento[%d]: ", cont);
+		scanf("%d",&arreglo[cont]);
+		cont++;
+	}
+	printf("Elementos del vector\n");
+	cont = 0;
+	while(cont < cant)
+	{
+		printf("Elemento[%d] = %d\n", cont, arreglo[cont]);
+		cont++;
+	}
+}
+
+void numBuscar(int cant)
+{
+	int cont = 0, arreglo[tam], buscar, cuenta = 0;
+	while(cont < cant)
+	{
+		printf("Ingrese el elemento[%d]: ", cont);
+		scanf("%d", &arreglo[cont]);
+		cont++;
+	}
+	printf("Ingrese el elemento a buscar\n");
+	scanf("%d", &buscar);
+	cont = 0;
+	while(cont < cant)
+	{
+		if(buscar == arreglo[cont])
+			cuenta++;
+		cont++;
+	}
+	printf("El numero %d se repite %d", buscar, cuenta);
+}
+
+void promedioEst(int cant)
+{
+	int cont = 0;
+	float notas[tam], prom = 0, suma = 0, mayor = 0, menor = 9999;
+	while(cont < cant)
+	{
+		printf("Ingrese la calificacion: ");
+		scanf("%f", &notas[cont]);
+		suma = suma + notas[cont];
+		if (notas[cont] > mayor)
+			mayor = notas[cont];
+		if (notas[cont] < menor)
+			menor = notas[cont];
+		cont++;
+	}
+	prom = suma / cant;
+	
+	printf("El promedio es %.2f\n", prom);
+	printf("La mayor nota es %.2f\n", mayor);
+	printf("La menor nota es %.2f\n", menor);
+}
+
+void paresImpares(int arreglo[tam])
+{
+	int contPares = 0, contImp = 0, cont = 0;
+	while(arreglo[cont] != 0)
+	{
+		cont++;
+		printf("Ingrese el numero: ");
+		scanf("%d", &arreglo[cont]);
+		
+		while(arreglo[cont] < 0)
+		{
+			printf("Ingrese un numero positivo: ");
+			scanf("%d", &arreglo[cont]);
+		}
+		
+		if(arreglo[cont] %2 == 0 && arreglo[cont] != 0)
+		{
+			contPares++;
+		}
+		else if(arreglo[cont] != 0)
+		{
+            contImp++;
+		}
+	}
+	
+	printf("El numero de Pares son %d\n",contPares);
+	printf("El numero de Impares son %d\n",contImp);
+}
+
+void multiplos(int cant)
+{
+	int cont = 0, arreglo[tam], suma = 0, mul = 0;
+	while(cont < cant)
+	{
+		mul = mul + 3;
+		arreglo[cont] = mul;
+		printf("%d\n", arreglo[cont]);
+		suma = suma + arreglo[cont];
+		cont++;
+	}
+	
+	printf("La suma de los multiplos es %d", suma);
+}
+
+void posNeg(int arreglo[tam])
+{
+	int contPos = 0, contNeg = 0, cont = 0;
+	while(arreglo[cont] != 0)
+	{
+		cont++;
+		
+		printf("Ingrese el numero: ");
+		scanf("%d",&arreglo[cont]);
+		
+		if(arreglo[cont] > 0)
+		{
+			contPos++;
+        }
+		else if(arreglo[cont] < 0)
+		{	
+		    contNeg++;
+		}
+	}
+	printf("Los numeros positivos son %d\n", contPos);
+	printf("Los numeros negativos son %d\n", contNeg);
+}
